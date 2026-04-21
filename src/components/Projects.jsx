@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, memo } from 'react';
 import {
   FaGithub, FaExternalLinkAlt, FaCode, FaTrophy,
   FaReact, FaNodeJs, FaDatabase, FaJava
@@ -136,7 +136,7 @@ const Projects = () => {
             </span>
           </motion.h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -156,10 +156,10 @@ const Projects = () => {
                   </div>
                 )}
 
-                <div className="glass-card p-4 md:p-6 hover-glass h-full cursor-pointer rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur transition-all duration-300 group-hover:border-primary-cyan/45 group-hover:shadow-[0_0_28px_rgba(34,211,238,0.18)]">
+                <div className="glass-card p-4 md:p-6 hover-glass h-full flex flex-col cursor-pointer rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 group-hover:border-primary-cyan/45 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] hover:-translate-y-1">
                   <div className="flex flex-col gap-4 md:gap-6">
                     {/* Project Image */}
-                    <div className="relative w-full h-[180px] md:h-[220px] overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur">
+                    <div className="relative w-full h-[220px] overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -351,4 +351,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default memo(Projects);

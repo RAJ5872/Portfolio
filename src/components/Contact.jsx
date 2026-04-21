@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, memo } from 'react';
 import { 
   FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, 
   FaPaperPlane, FaClock, FaCheckCircle, FaExclamationCircle
@@ -22,20 +22,20 @@ const Contact = () => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
+        delayChildren: 0.2,
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99]
+        duration: 0.5,
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
@@ -186,15 +186,15 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-dark-800 to-dark-900" ref={ref}>
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-12 md:py-20 bg-gradient-to-b from-dark-800 to-dark-900" ref={ref}>
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-16"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 md:mb-16"
             variants={itemVariants}
           >
             <span className="gradient-text">
@@ -202,11 +202,11 @@ const Contact = () => {
             </span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Info */}
             <motion.div
               variants={itemVariants}
-              className="space-y-8"
+              className="space-y-4 md:space-y-8"
             >
               <div>
                 <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
@@ -402,4 +402,4 @@ const Contact = () => {
 );
 };
 
-export default Contact;
+export default memo(Contact);

@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, memo } from 'react';
 import { FaCodeBranch, FaRocket, FaBrain, FaUsers } from 'react-icons/fa';
 
 const About = () => {
@@ -11,20 +11,20 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
+        delayChildren: 0.2,
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99]
+        duration: 0.5,
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
@@ -53,15 +53,15 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-dark-900 to-dark-800" ref={ref}>
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-12 md:py-20 bg-gradient-to-b from-dark-900 to-dark-800" ref={ref}>
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-16"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 md:mb-16"
             variants={itemVariants}
           >
             <span className="gradient-text">
@@ -69,7 +69,7 @@ const About = () => {
             </span>
           </motion.h2>
 
-          <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-stretch">
             <motion.div variants={itemVariants}>
               <div className="relative h-full">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-blue/20 to-primary-cyan/20 rounded-2xl blur-2xl opacity-60"></div>
@@ -132,4 +132,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default memo(About);

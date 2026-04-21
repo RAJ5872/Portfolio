@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, memo } from 'react';
 import { FaGithub, FaCode, FaStar, FaEye, FaUsers } from 'react-icons/fa';
 
 const GitHubStats = () => {
@@ -120,15 +120,15 @@ const GitHubStats = () => {
   };
 
   return (
-    <section id="github" className="py-20 bg-gradient-to-b from-slate-900 to-dark-50" ref={ref}>
-      <div className="container mx-auto px-6">
+    <section id="github" className="py-12 md:py-20 bg-gradient-to-b from-slate-900 to-dark-50" ref={ref}>
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-16"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 md:mb-16"
             variants={itemVariants}
           >
             <span className="gradient-text">
@@ -137,7 +137,7 @@ const GitHubStats = () => {
           </motion.h2>
 
           {/* Stats Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-16">
             <Counter 
               target={counters.repos} 
               label="Repositories" 
@@ -240,4 +240,4 @@ const GitHubStats = () => {
   );
 };
 
-export default GitHubStats;
+export default memo(GitHubStats);

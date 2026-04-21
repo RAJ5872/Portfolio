@@ -7,6 +7,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -15,6 +16,8 @@
     -moz-osx-font-smoothing: grayscale;
     background: #0b0f19;
     color: #f8fafc;
+    overflow-x: hidden;
+    will-change: auto;
   }
 
   * {
@@ -134,5 +137,36 @@
 
   .animate-parallax {
     animation: parallax 20s linear infinite;
+  }
+
+  /* GPU Acceleration */
+  .gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Optimized blur for performance */
+  .blur-performance {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Reduced motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-gradient,
+    .animate-glow,
+    .animate-magnetic,
+    .animate-parallax {
+      animation: none;
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .blur-performance {
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FaBars, FaTimes, FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa';
-import resume from '../assets/projects/Rajresumeupdatfinal.docx?url';
+import resume from '../assets/projects/Rajresumeupdatfinal.pdf';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,14 +37,14 @@ const Navbar = () => {
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled 
-            ? 'bg-dark-900/85 backdrop-blur-xl border-b border-primary-blue/20 shadow-[0_8px_30px_rgba(11,15,25,0.6)]' 
+            ? 'bg-dark-900/85 backdrop-blur-md border-b border-primary-blue/20 shadow-[0_4px_20px_rgba(11,15,25,0.4)]' 
             : 'bg-transparent'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <motion.div
@@ -55,7 +55,7 @@ const Navbar = () => {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-4 md:gap-8">
               {navItems.map((item, index) => (
                 <motion.button
                   key={index}
@@ -91,7 +91,7 @@ const Navbar = () => {
                 </motion.a>
                 <motion.a
                   href={resume}
-                  download="Raj_Panchal_Resume.docx"
+                  download="Raj_Panchal_Resume.pdf"
                   className="px-4 py-2 bg-gradient-to-r from-primary-blue to-primary-cyan text-white rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-primary-blue/25 transition-all duration-300 flex items-center gap-2 border border-primary-cyan/40"
                   whileHover={{ scale: 1.05 }}
                 >
@@ -135,7 +135,7 @@ const Navbar = () => {
 
             {/* Menu Panel */}
             <motion.div
-              className="absolute right-0 top-0 h-full w-64 bg-dark-900/95 backdrop-blur-xl border-l border-primary-blue/20"
+              className="absolute right-0 top-0 h-full w-64 bg-dark-900/95 backdrop-blur-md border-l border-primary-blue/20"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -180,7 +180,7 @@ const Navbar = () => {
                   
                   <motion.a
                     href={resume}
-                    download="Raj_Panchal_Resume.docx"
+                    download="Raj_Panchal_Resume.pdf"
                     className="w-full px-4 py-2 bg-gradient-to-r from-primary-blue to-primary-cyan text-white rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-primary-blue/25 transition-all duration-300 flex items-center justify-center gap-2 border border-primary-cyan/40"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
