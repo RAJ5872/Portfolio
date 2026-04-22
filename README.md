@@ -1,103 +1,16 @@
-# Raj Panchal Portfolio
+# React + Vite
 
-A modern, responsive portfolio website built with React, Vite, and Tailwind CSS.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
+Currently, two official plugins are available:
 
-- **Responsive Design**: Optimized for all devices (mobile, tablet, desktop)
-- **Modern UI**: Glassmorphism effects, smooth animations, and gradients
-- **Interactive Elements**: Framer Motion animations, hover effects
-- **Contact Form**: EmailJS integration for direct messaging
-- **Project Showcase**: Live demos and GitHub repository links
-- **Resume Download**: Direct resume download functionality
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Tech Stack
+## React Compiler
 
-- **Frontend**: React 18, Vite 4
-- **Styling**: Tailwind CSS 3
-- **Animations**: Framer Motion
-- **Icons**: React Icons
-- **Email Service**: EmailJS
-- **Build Tool**: Vite with Terser optimization
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Project Structure
+## Expanding the ESLint configuration
 
-```
-src/
-  components/          # React components
-    - Hero.jsx         # Main hero section
-    - Navbar.jsx       # Navigation component
-    - Projects.jsx     # Projects showcase
-    - Contact.jsx      # Contact form with EmailJS
-    - About.jsx        # About section
-    - Skills.jsx       # Skills section
-    - etc.
-  assets/
-    projects/          # Project images and resume
-  App.jsx              # Main app component
-  main.jsx             # App entry point
-```
-
-## Installation
-
-```bash
-# Clone the repository
-git clone <repository-url>
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## Deployment
-
-The project is optimized for deployment on various platforms:
-
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Vercel will automatically detect it's a Vite project
-3. Deploy with default settings
-
-### Netlify
-1. Build command: `npm run build`
-2. Publish directory: `dist`
-3. Add any environment variables if needed
-
-### GitHub Pages
-1. Build command: `npm run build`
-2. Deploy the `dist` folder to `gh-pages` branch
-
-### Static Hosting
-1. Run `npm run build`
-2. Upload the `dist` folder to your hosting provider
-
-## Environment Variables
-
-For the contact form to work, ensure EmailJS credentials are properly configured in the Contact component.
-
-## Performance Optimizations
-
-- **Code Splitting**: Manual chunks for vendor libraries
-- **Tree Shaking**: Unused code removal
-- **Minification**: Terser optimization
-- **Image Optimization**: Proper image formats and lazy loading
-- **Bundle Analysis**: Optimized chunk sizes
-
-## Browser Support
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-## License
-
-© 2026 Raj Panchal. All rights reserved.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

@@ -1,93 +1,73 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-// Components
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import ScrollProgress from './components/ScrollProgress';
-import BackToTop from './components/BackToTop';
-import CustomCursor from './components/CustomCursor';
-import ParticleBackground from './components/ParticleBackground';
-import Loading from './components/Loading';
-import ErrorBoundary from './components/ErrorBoundary';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Rocket, Palette } from 'lucide-react'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    // Apply theme
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
-    <ErrorBoundary>
-      <div className={`min-h-screen ${isDarkMode ? 'dark' : 'light'} bg-dark-900 text-white overflow-x-hidden`}>
-        <ParticleBackground />
-        <CustomCursor />
-        <ScrollProgress />
-        <BackToTop />
-                
-        <AnimatePresence mode="wait">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Navbar />
-            
-            <main>
-              <section id="home">
-                <Hero />
-              </section>
-              <About />
-              <Skills />
-              <Projects />
-              <Contact />
-            </main>
+    <div className="container">
+      <nav className="nav">
+        <div className="logo">Raj.dev</div>
+        <div style={{ display: 'flex', gap: '1.5rem' }}>
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+        </div>
+      </nav>
 
-            {/* Footer */}
-            <footer className="py-8 bg-dark-900 border-t border-primary-blue/20">
-              <div className="container mx-auto px-6 text-center">
-                <p className="text-gray-400 mb-2">
-                  Built by Raj Panchal with ❤️
-                </p>
-                <p className="text-sm text-gray-500">
-                  &copy; 2026
-                </p>
-              </div>
-            </footer>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </ErrorBoundary>
-  );
+      <main>
+        <section className="hero">
+          <div className="badge">Available for opportunities</div>
+          <h1>Crafting digital experiences with precision & purpose.</h1>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.25rem', maxWidth: '600px' }}>
+            Senior Full-stack Developer specializing in React, Node.js, and Cloud Architecture. 
+            Turning complex problems into elegant, production-ready solutions.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+            <a href="https://github.com" target="_blank" rel="noreferrer"><Github size={24} /></a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer"><Linkedin size={24} /></a>
+            <a href="mailto:hello@example.com"><Mail size={24} /></a>
+          </div>
+        </section>
+
+        <section id="projects" style={{ marginTop: '8rem' }}>
+          <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Featured Work</h2>
+          <div className="grid">
+            <ProjectCard 
+              title="Modern SaaS Platform" 
+              desc="A high-performance dashboard for data analytics and real-time monitoring."
+              icon={<Rocket className="text-accent" />}
+            />
+            <ProjectCard 
+              title="Creative Studio" 
+              desc="Minimalist portfolio for a design agency with smooth micro-interactions."
+              icon={<Palette className="text-accent" />}
+            />
+            <ProjectCard 
+              title="API Gateway" 
+              desc="Scalable infrastructure project handling millions of requests daily."
+              icon={<Code2 className="text-accent" />}
+            />
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer">
+        <p>&copy; {new Date().getFullYear()} Raj. Built with Vite & React. Deployed on Render.</p>
+      </footer>
+    </div>
+  )
 }
 
-export default App;
+function ProjectCard({ title, desc, icon }) {
+  return (
+    <div className="card">
+      <div style={{ marginBottom: '1.5rem', color: 'var(--accent)' }}>
+        {icon}
+      </div>
+      <h3 style={{ marginBottom: '0.75rem' }}>{title}</h3>
+      <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>{desc}</p>
+      <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem' }}>
+        View Project <ExternalLink size={14} />
+      </a>
+    </div>
+  )
+}
+
+export default App

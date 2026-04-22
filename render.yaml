@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: portfolio
-    env: static
-    buildCommand: chmod +x node_modules/.bin/vite && npm run build
-    staticPublishPath: dist
-    envVars:
-      - key: NODE_VERSION
-        value: 20.x
